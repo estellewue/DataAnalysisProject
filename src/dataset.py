@@ -7,10 +7,11 @@ expected_cols = 32
 #Load the data from the .csv
 try:
     dataList = np.loadtxt(path, delimiter=",")
-    print("Loaded successfully (all rows have 32 columns).")
+    print("Loaded successfully.")
 except ValueError as e:
     print("ValueError occurred while loading CSV:")
     print(e)
+
     # Load to inspect rows
     lines = np.genfromtxt(path, delimiter="\n", dtype=str)
     rows = np.char.split(lines, sep=",")
