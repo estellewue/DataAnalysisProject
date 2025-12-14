@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 path = "/Users/marcelwillkommen/Coding/DataForAI/DataAnalysisProject/DataAnalysisProject/data/processed/dataset-20251130.csv"
@@ -11,7 +12,7 @@ selected_headers= ['Time', 'Day_of_week', 'Age_band_of_driver', 'Vehicle_driver_
 
 
 # >0 - >7 out of 15 features are missing
-MISSING_THRESHOLD_RATIOS = np.array([0, 0.1, 0.15, 0.2, 0.3, 0.35, 0.4, 0.5])
+MISSING_THRESHOLD_RATIOS = np.array([0, 0.1, 0.15, 0.2, 0.3, 0.35, 0.4, 0.45])
 
 # Explicit missing marker
 MISSING = "MISSING"
@@ -38,6 +39,9 @@ selected_matrix = np.vstack(
     [data[:, col_idx[h]] for h in selected_headers]
 ).T
 
+y = np.array([])
+x = np.array(['> 0','> 1','> 2','> 3','> 4','> 5','> 6','> 7'])
+
 for ratio in MISSING_THRESHOLD_RATIOS:
     threshold = int(len(selected_headers) * ratio)
 
@@ -51,10 +55,22 @@ for ratio in MISSING_THRESHOLD_RATIOS:
     remaining_rows = filtered_data.shape[0]
     removed_rows = data.shape[0] - remaining_rows
     remaining_missing = np.sum(filtered_data == MISSING)
-    
+
     print(f"Threshold ratio: {ratio:>4}")
     print(f"  Missing allowed per row: {threshold}")
     print(f"  Rows removed: {removed_rows}")
+    y = np.append(y, removed_rows)
     print(f"  Rows remaining: {remaining_rows}")
     print(f"  Missing values remaining: {remaining_missing}\n")
 
+plt.plot(x, y, marker='o', linestyle='-', color='blue', label='Values')
+
+# Bar chart
+plt.bar(x, y, color='orange', label='Bars')
+
+plt.title('Rows with Missing Features')
+plt.xlabel('Features')
+plt.ylabel('Rows')
+plt.xticks(x)  # show all x values
+plt.grid(True)
+plt.show()
