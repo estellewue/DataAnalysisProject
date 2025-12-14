@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 path = "/Users/marcelwillkommen/Coding/DataForAI/DataAnalysisProject/DataAnalysisProject/data/processed/dataset-20251130.csv"
 output_path = "/Users/marcelwillkommen/Coding/DataForAI/DataAnalysisProject/DataAnalysisProject/data/processed/dataset-20251214.csv"
+figure_path = "/Users/marcelwillkommen/Coding/DataForAI/DataAnalysisProject/DataAnalysisProject/reports/figures/RowsMissingFeatures.pdf"
 
 selected_headers= ['Time', 'Day_of_week', 'Age_band_of_driver', 'Vehicle_driver_relation', 'Driving_experience',
                     'Type_of_vehicle', 'Owner_of_vehicle', 'Area_accident_occured', 'Lanes_or_Medians',
@@ -66,7 +67,7 @@ plt.ylabel('Rows')
 plt.xticks(MISSING_THRESHOLD_RATIOS)  # show all x values
 plt.grid(True)
 
-plt.savefig("/Users/marcelwillkommen/Coding/DataForAI/DataAnalysisProject/DataAnalysisProject/reports/figures/RowsMissingFeatures.pdf")
+plt.savefig(figure_path)
 plt.show()
 
 best_ratio = 0.2
