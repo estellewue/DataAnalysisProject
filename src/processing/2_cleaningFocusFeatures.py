@@ -31,9 +31,10 @@ print("Columns:", data.shape[1])
 # Column index lookup
 col_idx = {h: i for i, h in enumerate(headers)}
 
-# Replace "NULL" and empty strings with np.nan
+# Replace "NULL" and empty strings
 data[data == "NULL"] = MISSING
 data[data == ""] = MISSING
+data[data == "na"] = MISSING
 
 # Count missing values per row
 selected_matrix = np.vstack(

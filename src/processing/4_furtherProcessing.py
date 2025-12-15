@@ -82,5 +82,104 @@ data[:, col_index] = np.vectorize(
     lambda x: driving_exp_map.get(x, "unknown")
 )(data[:, col_index])
 
+# Service_year_of_vehicle
+
+column_name = "Service_year_of_vehicle"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+vehicle_service_map = {
+    "below 1yr": "new",
+    "1-2yr": "recent",
+    "2-5yrs": "used",
+    "5-10yrs": "old",
+    "above 10yr": "aged",
+    "unknown": "unknown"
+}
+
+service_idx = col_idx["Service_year_of_vehicle"]
+
+data[:, service_idx] = np.vectorize(
+    lambda x: vehicle_service_map.get(x, "unknown")
+)(data[:, service_idx])
+
+# Type_of_vehicle
+column_name = "Type_of_vehicle"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+vehicle_type_map = {
+    "automobile": "car",
+    "stationwagen": "car",
+    "taxi": "car",
+    "bajaj": "threewheeler",
+    "motorcycle": "motorcycle",
+    "bicycle": "bicycle",
+    "ridden horse": "horse",
+    "pick up upto 10q": "pickup",
+    "long lorry": "truck",
+    "lorry (11?40q)": "truck",
+    "lorry (41?100q)": "truck",
+    "public (12 seats)": "bus",
+    "public (13?45 seats)": "bus",
+    "public (> 45 seats)": "bus",
+    "special vehicle": "special",
+    "turbo": "special",
+    "other": "other",
+    "unknown": "unknown"
+}
+
+vehicle_idx = col_idx["Type_of_vehicle"]
+
+data[:, vehicle_idx] = np.vectorize(
+    lambda x: vehicle_type_map.get(x, "other")
+)(data[:, vehicle_idx])
+
+# Lanes_or_Medians
+column_name = "Lanes_or_Medians"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+lanes_medians_map = {
+    "one way": "oneway",
+    "undivided two way": "undivided",
+    "two-way (divided with broken lines road marking)": "twoway broken lines",
+    "two-way (divided with solid lines road marking)": "twoway solid lines",
+    "double carriageway (median)": "double carriageway",
+    "other": "other",
+    "unknown": "unknown"
+}
+
+lanes_idx = col_idx["Lanes_or_Medians"]
+
+data[:, lanes_idx] = np.vectorize(
+    lambda x: lanes_medians_map.get(x, "unknown")
+)(data[:, lanes_idx])
+
+# Age_band_of_casualty
+column_name = "Age_band_of_casualty"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+age_group_map = {
+    "under 18": "minor",
+    "5": "minor",
+    "18-30": "young",
+    "31-50": "adult",
+    "over 51": "senior",
+    "unknown": "unknown"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: age_group_map.get(x, "unknown")
+)(data[:, col_index])
 
 np.savetxt(output_path, data, delimiter=",", fmt="%s", header=",".join(headers))
