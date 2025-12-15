@@ -182,4 +182,201 @@ data[:, col_index] = np.vectorize(
     lambda x: age_group_map.get(x, "unknown")
 )(data[:, col_index])
 
+# Light_conditions
+column_name = "Light_conditions"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+lighting_condition_map = {
+    "darkness - lights lit": "lights",
+    "darkness - lights unlit": "darkness",
+    "darkness - no lighting": "darkness",
+    "daylight": "daylight"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: lighting_condition_map.get(x, "unknown")
+)(data[:, col_index])
+
+# Area_accident_occured
+column_name = "Area_accident_occured"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+area_map = {
+    "church areas": "church",
+    "hospital areas": "hospital",
+    "industrial areas": "industrial",
+    "market areas": "market",
+    "office areas": "office",
+    "other": "other",
+    "outside rural areas": "rural",
+    "recreational areas": "recreational",
+    "residential areas": "residential",
+    "rural village areas": "village",
+    "rural village areasoffice areas": "mixed",
+    "school areas": "school",
+    "unknown": "unknown"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: area_map.get(x, "unknown")
+)(data[:, col_index])
+
+# Road_surface_type
+column_name = "Road_surface_type"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+road_surface_map = {
+    "asphalt roads": "asphalt",
+    "asphalt roads with some distress": "asphalt",
+    "earth roads": "dirt",
+    "gravel roads": "gravel",
+    "other": "other",
+    "unknown": "unknown"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: road_surface_map.get(x, "unknown")
+)(data[:, col_index])
+
+# Road_surface_conditions
+column_name = "Road_surface_conditions"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+road_condition_map = {
+    "dry": "dry",
+    "wet or damp": "wet",
+    "snow": "snow",
+    "flood over 3cm. deep": "flood",
+    "unknown": "unknown",
+    "other": "other"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: road_condition_map.get(x, "unknown")
+)(data[:, col_index])
+
+# Road_allignment
+column_name = "Road_allignment"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+road_alignment_map = {
+    "escarpments": "escarpment",
+    "gentle horizontal curve": "curve",
+    "sharp reverse curve": "curve",
+    "steep grade downward with mountainous terrain": "downhill",
+    "steep grade upward with mountainous terrain": "uphill",
+    "tangent road with flat terrain": "tangent flat",
+    "tangent road with mild grade and flat terrain": "tangent grade",
+    "tangent road with mountainous terrain and": "tangent mountain",
+    "tangent road with rolling terrain": "tangent rolling",
+    "unknown": "unknown"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: road_alignment_map.get(x, "unknown")
+)(data[:, col_index])
+
+# Type_of_collision
+column_name = "Type_of_collision"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+collision_type_map = {
+    "collision with animals": "animal",
+    "collision with pedestrians": "pedestrian",
+    "collision with roadside objects": "roadside object",
+    "collision with roadside-parked vehicles": "parked vehicle",
+    "fall from vehicles": "fall",
+    "rollover": "rollover",
+    "vehicle with vehicle collision": "vehicle",
+    "with train": "train",
+    "other": "other",
+    "unknown": "unknown"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: collision_type_map.get(x, "unknown")
+)(data[:, col_index])
+
+#Vehicle_movement
+column_name = "Vehicle_movement"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+vehicle_movement_map = {
+    "entering a junction": "junction",
+    "getting off": "exiting",
+    "going straight": "straight",
+    "moving backward": "backward",
+    "other": "other",
+    "overtaking": "overtaking",
+    "parked": "parked",
+    "reversing": "backward",
+    "stopping": "stopping",
+    "turnover": "rollover",
+    "u-turn": "u_turn",
+    "unknown": "unknown",
+    "waiting to go": "waiting"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: vehicle_movement_map.get(x, "unknown")
+)(data[:, col_index])
+
+# Pedestrian_movement
+column_name = "Pedestrian_movement"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+pedestrian_movement_map = {
+    "crossing from driver's nearside": "nearside crossing",
+    "crossing from nearside - masked by parked or stationot a pedestrianry vehicle": "nearside crossing blocked",
+    "crossing from offside - masked by  parked or stationot a pedestrianry vehicle": "offside crossing blocked",
+    "not a pedestrian": "none",
+    "unknown or other": "unknown"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: pedestrian_movement_map.get(x, "unknown")
+)(data[:, col_index])
+
+# Defect_of_vehicle
+column_name = "Defect_of_vehicle"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+defect_vehicle_map = {
+    "5": "yes",
+    "7": "yes",
+    "no defect": "no",
+    "unknown": "unknown"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: defect_vehicle_map.get(x, "unknown")
+)(data[:, col_index])
+
 np.savetxt(output_path, data, delimiter=",", fmt="%s", header=",".join(headers))
