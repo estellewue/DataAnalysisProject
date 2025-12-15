@@ -379,4 +379,94 @@ data[:, col_index] = np.vectorize(
     lambda x: defect_vehicle_map.get(x, "unknown")
 )(data[:, col_index])
 
+# Casualty_class
+column_name = "Casualty_class"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+person_type_map = {
+    "driver or rider": "driver",
+    "passenger": "passenger",
+    "pedestrian": "pedestrian",
+    "unknown": "unknown"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: person_type_map.get(x, "unknown")
+)(data[:, col_index])
+
+# Accident_severity
+column_name = "Accident_severity"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+injury_severity_map = {
+    "fatal injury": "fatal",
+    "serious injury": "serious",
+    "slight injury": "slight"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: injury_severity_map.get(x, "unknown")
+)(data[:, col_index])
+
+# Educational_level
+column_name = "Educational_level"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+education_map = {
+    "illiterate": "illiterate",
+    "writing & reading": "basic literacy",
+    "elementary school": "elementary",
+    "junior high school": "junior high",
+    "high school": "high school",
+    "above high school": "higher education",
+    "unknown": "unknown"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: education_map.get(x, "unknown")
+)(data[:, col_index])
+
+# Cause_of_accident
+column_name = "Cause_of_accident"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+accident_cause_map = {
+    "changing lane to the left": "lane change left",
+    "changing lane to the right": "lane change right",
+    "driving at high speed": "high speed",
+    "overspeed": "speeding",
+    "driving carelessly": "careless",
+    "driving to the left": "lane violation",
+    "driving under the influence of drugs": "drugs",
+    "drunk driving": "alcohol",
+    "getting off the vehicle improperly": "improper exit",
+    "improper parking": "parking violation",
+    "moving backward": "backward",
+    "no distancing": "distance",
+    "no priority to pedestrian": "pedestrian violation",
+    "no priority to vehicle": "priority violation",
+    "other": "other",
+    "overloading": "overloading",
+    "overtaking": "overtaking",
+    "overturning": "rollover",
+    "turnover": "rollover",
+    "unknown": "unknown"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: accident_cause_map.get(x, "unknown")
+)(data[:, col_index])
+
 np.savetxt(output_path, data, delimiter=",", fmt="%s", header=",".join(headers))
