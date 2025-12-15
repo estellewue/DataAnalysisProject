@@ -41,8 +41,46 @@ data[:, time_idx] = hours.astype(str)
 data[data == "MISSING"] = "unknown"
 data[data == "missing"] = "unknown"
 
-# Normalize Age_band_of_driver and Driving_experience
+# Normalize Age_band_of_driver
 # 1. get unique values 2. categorize 3. transform
+column_name = "Age_band_of_driver"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+age_group_map = {
+    "under 18": "minor",
+    "18-30": "young",
+    "31-50": "adult",
+    "over 51": "senior",
+    "unknown": "unknown"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: age_group_map.get(x, "unknown")
+)(data[:, col_index])
+
+# Normalize Driving_experience
+column_name = "Driving_experience"
+col_index = col_idx[column_name]
+
+unique_values = np.unique(data[:, col_index])
+print(unique_values)
+
+driving_exp_map = {
+    "below 1yr": "novice",
+    "1-2yr": "junior",
+    "2-5yr": "intermediate",
+    "5-10yr": "experienced",
+    "above 10yr": "veteran",
+    "no licence": "unlicensed",
+    "unknown": "unknown"
+}
+
+data[:, col_index] = np.vectorize(
+    lambda x: driving_exp_map.get(x, "unknown")
+)(data[:, col_index])
 
 
 np.savetxt(output_path, data, delimiter=",", fmt="%s", header=",".join(headers))
