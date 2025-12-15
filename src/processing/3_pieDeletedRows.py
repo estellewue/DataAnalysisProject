@@ -3,8 +3,9 @@ import matplotlib.pyplot as plt
 
 path = "/Users/marcelwillkommen/Coding/DataForAI/DataAnalysisProject/DataAnalysisProject/reports/figures/PieDeletedRows.pdf"
 
-labels = [str(round((12161/12317)*100, 2)) + '% - Remaining', str(round((82/12317)*100, 2)) + '% - Invalid rows', str(round((71/12317)*100, 2)) + '% - Missing-Value Threshold Selection']
-sizes = [(12161/12317)*100, (82/12317)*100, (71/12317)*100]  
+labels = [str(round((12124/12317)*100, 2)) + '% - Remaining', str(round((82/12317)*100, 2)) + '% - Invalid Rows',
+          str(round((71/12317)*100, 2)) + '% - Missing-Value Threshold', str(round((37/12317)*100, 2)) + '% - Threshold after Categorization']
+sizes = [(12124/12317)*100, (82/12317)*100, (71/12317)*100, (37/12317)*100]  
 colors = ['#ff9999','#66b3ff','#99ff99','#ffcc99'] 
 
 # Create pie chart
