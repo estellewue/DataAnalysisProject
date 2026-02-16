@@ -5,7 +5,6 @@ import os
 
 
 os.makedirs("eda_plots", exist_ok=True)
-os.makedirs("eda_tables", exist_ok=True)
 
 df = pd.read_csv("dataset-20251215_2.csv")
 
@@ -132,3 +131,4 @@ plt.legend(title="Road Surface", bbox_to_anchor=(1.05, 1), loc="upper left")
 plt.tight_layout()
 plt.savefig("eda_plots/high_impact_causes_road_surface.png", dpi=300)
 plt.show()
+
