@@ -61,7 +61,7 @@ fatal_ranked = ct_cause_sev.sort_values(
     ascending=False
 )
 
-# Top 10 Ursachen mit höchstem Fatal-Anteil
+# Top 10 causes with highest fatal risks
 top_fatal = fatal_ranked.head(10)
 
 plt.figure(figsize=(10, 6))
@@ -131,4 +131,5 @@ plt.legend(title="Road Surface", bbox_to_anchor=(1.05, 1), loc="upper left")
 plt.tight_layout()
 plt.savefig("eda_plots/high_impact_causes_road_surface.png", dpi=300)
 plt.show()
+
 
