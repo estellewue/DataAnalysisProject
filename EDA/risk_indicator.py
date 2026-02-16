@@ -3,7 +3,6 @@ import os
 
 
 os.makedirs("eda_plots", exist_ok=True)
-os.makedirs("eda_tables", exist_ok=True)
 
 df = pd.read_csv("dataset-20251215_2.csv") 
 
@@ -71,4 +70,5 @@ for risk in composite_risks.keys():
 # -----------------------------
 for risk, table in results.items():
     print(f"\n=== High-impact share for {risk} ===")
+
     print(table)
