@@ -10,8 +10,7 @@ sns.set(style="whitegrid")
 
 df = pd.read_csv("dataset-20251215_2.csv")
 
-OUTPUT_DIR = "eda_plots"
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+os.makedirs("eda_plots", exist_ok=True)
 
 def save_plot(filename):
     plt.tight_layout()
@@ -176,3 +175,4 @@ plt.xlabel("Cause of Accident")
 plt.ylabel("Count")
 plt.xticks(rotation=45, ha="right")
 save_plot("15_distribution_cause_of_accident.png")
+
