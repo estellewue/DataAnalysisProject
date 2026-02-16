@@ -4,7 +4,6 @@ import seaborn as sns
 import os
 
 os.makedirs("eda_plots", exist_ok=True)
-os.makedirs("eda_tables", exist_ok=True)
 
 df = pd.read_csv("dataset-20251215_2.csv")
 
@@ -103,3 +102,4 @@ plt.tight_layout()
 
 plt.savefig("eda_plots/experience_light_high_impact_heatmap.png")
 plt.close()
+
